@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Website Builder</title>
+    <script>
+        async function generateWebsite() {
+            let command = document.getElementById("command").value;
+            let response = await fetch("https://your-backend-api-url.com/generate", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ command: command })
+            });
+            let result = await response.text();
+            document.getElementById("websiteCode").value = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>AI Website Builder</h1>
+    <input type="text" id="command" placeholder="Type your request">
+    <button onclick="generateWebsite()">Generate</button>
+    <textarea id="websiteCode" rows="10" cols="80"></textarea>
+</body>
+</html>
